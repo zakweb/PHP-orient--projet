@@ -10,16 +10,18 @@ class Classe
      * -----------------------------------------------
      */
 
-    private $nom;
-    private $capacite;
-    private $professeurP;
+    private $nom,
+            $capacite,
+            $professeurP,
+            $eleves;
 
 
     public function __construct($nom, $capacite, $professeurP){
-
+// on ne remplit pas le tableau avec des eleves puisque ce n'est pas définitif//
         $this-> nom = $nom;
         $this->capacite = $capacite;
         $this->professeurP = $professeurP;
+        $this->eleves= [];
 
     }
     /**********************   GETTERS  ***************************/
@@ -37,7 +39,28 @@ class Classe
     {
         return $this->professeurP;
     }
+////////////   AJOUT des eleves dans la classe sous forme de tableau/////////
+    /**
+     * @return array
+     */
+    public function getEleves()
+    {
+        return $this->eleves;
+    }
 
+    /**
+     * @param array $eleves
+     */
+    public function setEleves($eleves)
+    {
+        $this->eleves = $eleves;
+    }
+//    on ajoute la class Eleve devant la variable eleve pour securiser l'affichage//
+// RECOMMANDE dans la declaration //
+    public function addeleve(Eleve$eleve)
+    {
+        $this->eleves[] = $eleve;
+    }
     /*********************** SETTERS ********************************/
 
 

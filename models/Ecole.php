@@ -21,6 +21,7 @@ class Ecole
     private $capacite;
     private $type;
     private $directeur;
+    private $classes ;
 
 /*  Alors, pour permettre l'attribution de valeurs à mes propriétés, je vais
     mettre en place un CONSTRUCTEUR.
@@ -31,6 +32,7 @@ class Ecole
 *Cette fonction est executée AUTOMATIQUEMENT par PHP au moment de l'instanciation de la classe. */
 
     public function __construct($nom, $adresse, $capacite, $type, $directeur){
+//En Symfony, la class construtor n'existe pas mais elle est remplacé par le setter.
 
 /* La propriété "nom" de classe ( $this->nom ) prend comme valeur, la valeur de la variable ( $nom ) passée en paramètre au moment de l'instanciation.
           $this se réfère à votre objet
@@ -41,9 +43,10 @@ class Ecole
     $this->capacite = $capacite;
     $this->type = $type;
     $this->directeur = $directeur;
+    $this->classe =[];
 }
     /**********************   GETTERS  ***************************/
-//    Pour aller recupérer les données
+//    Pour aller recupérer les données  et les retourner pour obtenir le contrôle.
     public function getNom()
     {
         return $this->nom;
@@ -63,7 +66,29 @@ class Ecole
     public function getDirecteur()
     {
         return $this->directeur;
+
     }
+//Ajout du tableau de l'ecole comprenant les classes //
+    /**
+     * @return array
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
+
+    /**
+     * @param array $classe
+     */
+    public function setClasses($classes)
+    {
+        $this->classes [] = $classes;
+    }
+    public function addclasse(Classe$classe){
+        $this->classes[] = $classe;
+    }
+
+
     /*********************** SETTERS ********************************/
 //    Pour modifier les données
     public function setNom($nom)
